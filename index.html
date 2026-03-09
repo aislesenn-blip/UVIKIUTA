@@ -37,6 +37,8 @@
         .logo { font-size: 1.8rem; font-weight: 700; color: var(--white); letter-spacing: 1px; }
         .logo span { color: var(--secondary-color); }
         
+        .menu-toggle { display: none; }
+
         .nav-links { display: flex; gap: 2rem; align-items: center; }
         .nav-links li a { color: var(--white); font-weight: 600; transition: var(--transition); }
         .nav-links li a:hover { color: var(--secondary-color); }
@@ -73,12 +75,14 @@
         .search-input {
             flex: 1; border: none; padding: 1rem 1.5rem; outline: none;
             font-family: inherit; font-size: 1rem; border-right: 1px solid #E5E7EB;
+            min-width: 0; background: transparent;
         }
         .search-input:last-of-type { border-right: none; }
         .search-btn {
             background: var(--primary-color); color: var(--white); border: none;
             padding: 0 2rem; border-radius: 50px; font-weight: 600; cursor: pointer;
             transition: var(--transition); font-family: inherit; font-size: 1rem;
+            white-space: nowrap;
         }
         .search-btn:hover { background: #143325; }
 
@@ -135,12 +139,19 @@
 
         /* Responsive */
         @media(max-width: 768px) {
+            .menu-toggle { display: block; cursor: pointer; color: var(--white); font-size: 1.5rem; }
+            nav.scrolled .menu-toggle { color: var(--primary-color); }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 2rem 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); gap: 1.5rem; text-align: center; }
+            .nav-links.active { display: flex; }
+            .nav-links li a { color: var(--text-dark); }
+
             .hero-content h1 { font-size: 2.5rem; }
-            .search-bar { flex-direction: column; border-radius: 12px; padding: 1rem; background: transparent; box-shadow: none; }
-            .search-input { border-right: none; border-bottom: 1px solid #ddd; border-radius: 8px; margin-bottom: 0.5rem; }
-            .search-btn { padding: 1rem; border-radius: 8px; }
-            .stats-section { flex-direction: column; gap: 2rem; padding: 2rem; margin-top: 2rem; border-radius: 0; box-shadow: none; }
-            .nav-links { display: none; } /* Add hamburger menu logic for mobile in production */
+            .search-bar { flex-direction: column; border-radius: 12px; padding: 1rem; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .search-input { border-right: none; border-bottom: 1px solid #E5E7EB; border-radius: 0; margin-bottom: 0; padding: 0.8rem; }
+            .search-input:last-of-type { border-bottom: none; margin-bottom: 0.5rem; }
+            .search-btn { width: 100%; padding: 1rem; border-radius: 8px; }
+
+            .stats-section { display: grid; grid-template-columns: 1fr; gap: 2rem; padding: 2rem; margin-top: 2rem; border-radius: 0; box-shadow: none; text-align: center; }
         }
     </style>
 </head>
@@ -148,6 +159,9 @@
 
     <nav id="navbar">
         <a href="#" class="logo">UVIKI<span>UTA</span></a>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Opportunities</a></li>
@@ -338,6 +352,22 @@
                 grid.innerHTML = html;
             }
         }
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
 
         // Initialize API calls
         document.addEventListener('DOMContentLoaded', () => {
