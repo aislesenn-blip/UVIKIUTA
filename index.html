@@ -33,6 +33,7 @@
 
         /* ================= RESET & BASE ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; font-size: var(--font-size-base); }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -52,12 +53,12 @@
         .menu-toggle { display: none; }
 
         .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links li a { color: var(--white); font-weight: 600; transition: var(--transition); font-size: 1.125rem; letter-spacing: 0.5px; }
+        .nav-links li a { color: var(--white); font-weight: 600; transition: var(--transition); font-size: 1.35rem; letter-spacing: 0.5px; }
         .nav-links li a:hover { color: var(--secondary-color); }
         
         .btn-primary {
             background: var(--secondary-color); color: var(--white) !important;
-            padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.125rem; letter-spacing: 0.5px;
+            padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.35rem; letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(252, 163, 17, 0.3); transition: var(--transition);
         }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(252, 163, 17, 0.5); }
@@ -115,7 +116,7 @@
         .section-header p { color: var(--text-light); font-size: var(--font-size-xl); max-width: 900px; margin: 0 auto; line-height: 1.8; }
         
         .opportunities { padding: var(--spacing-xl) 5%; max-width: 1600px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: var(--spacing-lg); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: var(--spacing-lg); }
         
         .card {
             background: var(--white); border-radius: 30px; overflow: hidden;
@@ -193,7 +194,8 @@
             .nav-links.active { display: flex; }
             .nav-links li a { color: var(--text-dark); font-size: var(--font-size-lg); }
 
-            .hero-content h1 { font-size: var(--font-size-4xl); }
+            .hero-content h1 { font-size: var(--font-size-3xl); line-height: 1.2; }
+            .hero-content p { font-size: var(--font-size-lg); }
             .search-bar { flex-direction: column; border-radius: 12px; padding: 1rem; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
             .search-input { border-right: none; border-bottom: 1px solid #E5E7EB; border-radius: 0; margin-bottom: 0; padding: 0.8rem; }
             .search-input:last-of-type { border-bottom: none; margin-bottom: 0.5rem; }
@@ -284,7 +286,7 @@
                     <p class="card-desc">Help us secure funding for new community schools by researching and writing grant proposals.</p>
                     <div class="card-footer">
                         <span style="font-size:1rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> Fundraising</span>
-                        <a href="#apply" onclick="openModal('Apply for Grant Writing Specialist')" class="read-more" style="font-size: 1.125rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
+                        <a href="#apply" onclick="openModal('Apply for Grant Writing Specialist')" class="read-more" style="font-size: 1.35rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -301,7 +303,7 @@
                     <p class="card-desc">Assist our local tech teams in maintaining and upgrading educational platforms for rural students.</p>
                     <div class="card-footer">
                         <span style="font-size:1rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> Technology</span>
-                        <a href="#apply" onclick="openModal('Apply for Web Developer (Volunteer)')" class="read-more" style="font-size: 1.125rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
+                        <a href="#apply" onclick="openModal('Apply for Web Developer (Volunteer)')" class="read-more" style="font-size: 1.35rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -355,7 +357,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>UVIKIUTA</h3>
-                <p style="color: #D1D5DB; margin-bottom: 2rem; font-size: 1.125rem; line-height: 1.8;">Empowering communities through dedicated volunteering. Connecting global skills with local needs.</p>
+                <p style="color: #D1D5DB; margin-bottom: 2rem; font-size: 1.35rem; line-height: 1.8;">Empowering communities through dedicated volunteering. Connecting global skills with local needs.</p>
                 <div class="social-links">
                     <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
@@ -453,7 +455,7 @@
                                 <p class="card-desc">Help drive positive change by supporting our ${job.cause.toLowerCase()} initiatives. Your skills are needed.</p>
                                 <div class="card-footer">
                                     <span style="font-size:1rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> ${job.cause}</span>
-                                    <a href="#apply" onclick="openModal(\`Apply for ${job.title.replace(/'/g, "\\'")}\`)" class="read-more" style="font-size: 1.125rem;">Apply Now <i class="fas fa-arrow-right" style="margin-left:5px;"></i></a>
+                                    <a href="#apply" onclick="openModal(\`Apply for ${job.title.replace(/'/g, "\\'")}\`)" class="read-more" style="font-size: 1.35rem;">Apply Now <i class="fas fa-arrow-right" style="margin-left:5px;"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -480,7 +482,7 @@
                                 <p class="card-desc">Help drive positive change by supporting our ${job.cause.toLowerCase()} initiatives. Your skills are needed.</p>
                                 <div class="card-footer">
                                     <span style="font-size:1rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> ${job.cause}</span>
-                                    <a href="#apply" onclick="openModal(\`Apply for ${job.title.replace(/'/g, "\\'")}\`)" class="read-more" style="font-size: 1.125rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
+                                    <a href="#apply" onclick="openModal(\`Apply for ${job.title.replace(/'/g, "\\'")}\`)" class="read-more" style="font-size: 1.35rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </article>
