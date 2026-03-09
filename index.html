@@ -10,6 +10,17 @@
     <style>
         /* ================= CSS VARIABLES (BRANDING) ================= */
         :root {
+            --font-size-base: 1.125rem; /* 18px base */
+            --font-size-lg: 1.25rem;
+            --font-size-xl: 1.5rem;
+            --font-size-2xl: 2rem;
+            --font-size-3xl: 3rem;
+            --font-size-4xl: 4.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-2xl: 8rem;
             --primary-color: #1B4332; /* Deep Tanzanian Green */
             --secondary-color: #FCA311; /* Vibrant Sunset Orange */
             --text-dark: #1F2937;
@@ -21,7 +32,7 @@
 
         /* ================= RESET & BASE ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; font-size: var(--font-size-base); }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
@@ -29,7 +40,7 @@
         nav {
             position: fixed; width: 100%; top: 0; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%; transition: var(--transition);
+            padding: 2rem 5%; transition: var(--transition);
         }
         nav.scrolled { background: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 1rem 5%; }
         nav.scrolled .logo, nav.scrolled .nav-links li a { color: var(--primary-color); }
@@ -40,12 +51,12 @@
         .menu-toggle { display: none; }
 
         .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links li a { color: var(--white); font-weight: 600; transition: var(--transition); }
+        .nav-links li a { color: var(--white); font-weight: 600; transition: var(--transition); font-size: 1.125rem; letter-spacing: 0.5px; }
         .nav-links li a:hover { color: var(--secondary-color); }
         
         .btn-primary {
             background: var(--secondary-color); color: var(--white) !important;
-            padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 600;
+            padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.125rem; letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(252, 163, 17, 0.3); transition: var(--transition);
         }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(252, 163, 17, 0.5); }
@@ -62,25 +73,25 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(27, 67, 50, 0.7), rgba(27, 67, 50, 0.9)); z-index: 1;
         }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; color: var(--white); }
-        .hero-content h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 2.5rem; font-weight: 300; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; color: var(--white); padding: 0 var(--spacing-md); }
+        .hero-content h1 { font-size: var(--font-size-4xl); font-weight: 700; margin-bottom: var(--spacing-md); line-height: 1.15; letter-spacing: -1px; }
+        .hero-content p { font-size: var(--font-size-lg); margin-bottom: var(--spacing-lg); font-weight: 400; line-height: 1.8; opacity: 0.95; }
 
         /* Search Bar */
         .search-bar {
-            display: flex; background: var(--white); padding: 0.5rem;
-            border-radius: 50px; box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            max-width: 900px; margin: 0 auto; width: 100%;
+            display: flex; background: var(--white); padding: 0.75rem;
+            border-radius: 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 1000px; margin: 0 auto; width: 100%;
         }
         .search-input {
-            flex: 1; border: none; padding: 1rem 1.5rem; outline: none;
-            font-family: inherit; font-size: 1rem; border-right: 1px solid #E5E7EB;
-            min-width: 0; background: transparent;
+            flex: 1; border: none; padding: 1.2rem 2rem; outline: none;
+            font-family: inherit; font-size: 1.125rem; border-right: 1px solid #E5E7EB;
+            min-width: 0; background: transparent; color: var(--text-dark);
         }
         .search-input:last-of-type { border-right: none; }
         .search-btn {
             background: var(--primary-color); color: var(--white); border: none;
-            padding: 0 2rem; border-radius: 50px; font-weight: 600; cursor: pointer;
+            padding: 0 3rem; border-radius: 50px; font-weight: 600; cursor: pointer; font-size: 1.125rem; letter-spacing: 0.5px;
             transition: var(--transition); font-family: inherit; font-size: 1rem;
             white-space: nowrap;
         }
@@ -89,21 +100,21 @@
         /* ================= STATS SECTION ================= */
         .stats-section {
             display: flex; justify-content: center; gap: 4rem;
-            padding: 4rem 5%; background: var(--white); margin-top: -50px;
+            padding: var(--spacing-lg) 5%; background: var(--white); margin-top: -80px;
             position: relative; z-index: 10; border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 1200px; margin-left: auto; margin-right: auto;
         }
         .stat-item { text-align: center; }
-        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--secondary-color); }
-        .stat-label { color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .stat-number { font-size: var(--font-size-3xl); font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem; }
+        .stat-label { color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; }
 
         /* ================= FEATURED OPPORTUNITIES ================= */
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.5rem; }
-        .section-header p { color: var(--text-light); font-size: 1.1rem; }
+        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
+        .section-header h2 { font-size: var(--font-size-3xl); color: var(--primary-color); margin-bottom: 1rem; font-weight: 700; }
+        .section-header p { color: var(--text-light); font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto; line-height: 1.8; }
         
-        .opportunities { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .opportunities { padding: var(--spacing-xl) 5%; max-width: 1300px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--spacing-md); }
         
         .card {
             background: var(--white); border-radius: 16px; overflow: hidden;
@@ -111,29 +122,29 @@
             border: 1px solid #F3F4F6;
         }
         .card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
-        .card-img { height: 200px; background-color: #E5E7EB; position: relative; background-size: cover; background-position: center; }
+        .card-img { height: 250px; background-color: #E5E7EB; position: relative; background-size: cover; background-position: center; }
         .badge {
             position: absolute; top: 15px; left: 15px; background: #EF4444; color: white;
             padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
         }
-        .card-content { padding: 1.5rem; }
-        .card-meta { display: flex; gap: 1rem; color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .card-content { padding: 2.5rem; }
+        .card-meta { display: flex; gap: 1.5rem; color: var(--text-light); font-size: 1rem; margin-bottom: 1.2rem; font-weight: 500; }
         .card-meta i { color: var(--secondary-color); }
-        .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-color); }
-        .card-desc { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .card-title { font-size: var(--font-size-xl); font-weight: 700; margin-bottom: 1rem; color: var(--primary-color); line-height: 1.4; }
+        .card-desc { color: var(--text-light); font-size: 1.125rem; margin-bottom: 2rem; line-height: 1.7; }
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F3F4F6; padding-top: 1rem; }
         .read-more { color: var(--primary-color); font-weight: 600; }
         .read-more:hover { color: var(--secondary-color); }
 
         /* ================= FOOTER ================= */
-        footer { background: var(--primary-color); color: var(--white); padding: 4rem 5% 2rem; }
+        footer { background: var(--primary-color); color: var(--white); padding: var(--spacing-xl) 5% var(--spacing-md); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .footer-col h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--secondary-color); }
-        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col h3 { font-size: var(--font-size-xl); margin-bottom: 2rem; color: var(--secondary-color); font-weight: 700; }
+        .footer-col ul li { margin-bottom: 1.2rem; font-size: 1.125rem; }
         .footer-col ul li a { color: #D1D5DB; transition: var(--transition); }
         .footer-col ul li a:hover { color: var(--white); padding-left: 5px; }
         .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
-        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .social-links a { width: 50px; height: 50px; font-size: 1.2rem; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
         .social-links a:hover { background: var(--secondary-color); }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #9CA3AF; font-size: 0.9rem; }
 
@@ -145,7 +156,7 @@
             .nav-links.active { display: flex; }
             .nav-links li a { color: var(--text-dark); }
 
-            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: var(--font-size-3xl); }
             .search-bar { flex-direction: column; border-radius: 12px; padding: 1rem; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
             .search-input { border-right: none; border-bottom: 1px solid #E5E7EB; border-radius: 0; margin-bottom: 0; padding: 0.8rem; }
             .search-input:last-of-type { border-bottom: none; margin-bottom: 0.5rem; }
@@ -158,16 +169,16 @@
 <body>
 
     <nav id="navbar">
-        <a href="#" class="logo">UVIKI<span>UTA</span></a>
+        <a href="#hero-section" class="logo">UVIKI<span>UTA</span></a>
         <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Opportunities</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Stories</a></li>
-            <li><a href="#" class="btn-primary">Sign Up</a></li>
+            <li><a href="#hero-section">Home</a></li>
+            <li><a href="#opportunities">Opportunities</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="#stories">Stories</a></li>
+            <li><a href="javascript:alert('Thank you for your interest! Sign up form coming soon.');" class="btn-primary">Sign Up</a></li>
         </ul>
     </nav>
 
@@ -201,7 +212,7 @@
         </div>
     </section>
 
-    <section class="opportunities">
+    <section class="opportunities" id="opportunities">
         <div class="section-header">
             <h2>Featured Opportunities</h2>
             <p>Urgent and high-impact projects that need your skills right now.</p>
@@ -217,34 +228,34 @@
         </div>
     </section>
 
-    <footer>
+    <footer id="about-us">
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>UVIKIUTA</h3>
-                <p style="color: #D1D5DB; margin-bottom: 1rem;">Empowering communities through dedicated volunteering. Connecting global skills with local needs.</p>
+                <p style="color: #D1D5DB; margin-bottom: 2rem; font-size: 1.125rem; line-height: 1.8;">Empowering communities through dedicated volunteering. Connecting global skills with local needs.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="footer-col">
                 <h3>Explore</h3>
                 <ul>
-                    <li><a href="#">Find Opportunities</a></li>
-                    <li><a href="#">Virtual Volunteering</a></li>
-                    <li><a href="#">Success Stories</a></li>
-                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#opportunities">Find Opportunities</a></li>
+                    <li><a href="javascript:alert('Virtual Volunteering page is currently under construction.');">Virtual Volunteering</a></li>
+                    <li id="stories"><a href="javascript:alert('Success Stories page is currently under construction.');">Success Stories</a></li>
+                    <li><a href="#about-us">Our Mission</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
+            <div class="footer-col" id="contact">
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="#">Volunteer Guides</a></li>
-                    <li><a href="#">Safety & Policies</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="javascript:alert('Volunteer Guides coming soon.');">Volunteer Guides</a></li>
+                    <li><a href="javascript:alert('Safety & Policies document opening soon.');">Safety & Policies</a></li>
+                    <li><a href="javascript:alert('FAQ page is currently being updated.');">FAQ</a></li>
+                    <li><a href="mailto:contact@uvikiuta.org">Contact Us</a></li>
                 </ul>
             </div>
         </div>
@@ -315,8 +326,8 @@
                                 <h3 class="card-title">${job.title}</h3>
                                 <p class="card-desc">Help drive positive change by supporting our ${job.cause.toLowerCase()} initiatives. Your skills are needed.</p>
                                 <div class="card-footer">
-                                    <span style="font-size:0.85rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> ${job.cause}</span>
-                                    <a href="#" class="read-more">Apply Now <i class="fas fa-arrow-right" style="margin-left:5px;"></i></a>
+                                    <span style="font-size:1rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> ${job.cause}</span>
+                                    <a href="javascript:alert(\`Application process starting for ${job.title.replace(/'/g, "\\'")}\`);" class="read-more" style="font-size: 1.125rem;">Apply Now <i class="fas fa-arrow-right" style="margin-left:5px;"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -342,8 +353,8 @@
                                 <h3 class="card-title">${job.title}</h3>
                                 <p class="card-desc">Help drive positive change by supporting our ${job.cause.toLowerCase()} initiatives. Your skills are needed.</p>
                                 <div class="card-footer">
-                                    <span style="font-size:0.85rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> ${job.cause}</span>
-                                    <a href="#" class="read-more">Apply Now <i class="fas fa-arrow-right"></i></a>
+                                    <span style="font-size:1rem; font-weight:600; color:var(--text-light);"><i class="fas fa-tag"></i> ${job.cause}</span>
+                                    <a href="javascript:alert(\`Application process starting for ${job.title.replace(/'/g, "\\'")}\`);" class="read-more" style="font-size: 1.125rem;">Apply Now <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -367,6 +378,19 @@
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = document.querySelectorAll('.nav-links li a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
 
         // Initialize API calls
